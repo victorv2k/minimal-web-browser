@@ -1,0 +1,12 @@
+[Desktop Entry]
+Name=Minimal Web Browser
+Comment=Browse the World Wide Web in less than a second
+GenericName=Web Browser
+Exec=web %u
+Terminal=false
+X-MultipleArgs=false
+Type=Application
+Icon=minimalwebbrowser.png
+Categories=Network;
+MimeType=text/html;text/xml;application/xhtml+xml;application/xml;image/gif;image/jpeg;image/png
+StartupNotify=true

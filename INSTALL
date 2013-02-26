@@ -1,0 +1,6 @@
+Install Instructions:
+
+tar xf web_1.0-1_armhf.deb.tar.gz
+
+sudo dpkg -i web_1.0-1_armhf.deb
+

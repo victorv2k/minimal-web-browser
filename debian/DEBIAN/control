@@ -1,0 +1,9 @@
+Package: web
+Version: 1.0-1
+Section: network
+Architecture: all
+Depends: libwebkitgtk-3.0-0
+Maintainer: Ralph Glass <no@mail.available>
+Description: Minimalistic Web Browser
+ intended for use as fast and featureless sidekick browser on low end systems
+ (startup time on a raspberrypi less than one second)
