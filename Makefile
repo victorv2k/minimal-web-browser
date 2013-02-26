@@ -10,6 +10,7 @@ remove:
 	rm $(prefix)/bin/web
 
 clean:
+	rm ./web
 
 tar: web.c Makefile
 	tar -czvf web_1.0-1_armhf.deb.tar.gz Makefile web.c web_1.0-1_armhf.deb INSTALL COPYING debian
