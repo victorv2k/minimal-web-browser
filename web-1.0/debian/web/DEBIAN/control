@@ -7,5 +7,5 @@ Depends: libwebkitgtk-3.0-0
 Section: net
 Priority: optional
 Description: minimal-web-browser
-  intended as fast and featureless sidekick browser
-  (start up on raspberrypi less than a second)
+    intended as fast and featureless sidekick browser
+    (start up on raspberrypi less than a second)
