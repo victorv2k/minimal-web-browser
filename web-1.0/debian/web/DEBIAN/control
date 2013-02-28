@@ -1,0 +1,11 @@
+Package: web
+Version: 1.0-2
+Architecture: armhf
+Maintainer: Ralph Glass <ralph.glass@t-online.de>
+Installed-Size: 59
+Depends: libwebkitgtk-3.0-0
+Section: net
+Priority: optional
+Description: minimal-web-browser
+  intended as fast and featureless sidekick browser
+  (start up on raspberrypi less than a second)

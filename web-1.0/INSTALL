@@ -1,0 +1,4 @@
+Install Instructions:
+
+sudo dpkg -i web_1.0-2_armhf.deb
+

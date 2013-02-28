@@ -1,0 +1,31 @@
+Format: 1.8
+Date: Thu, 28 Feb 2013 17:25:32 +0000
+Source: web
+Binary: web
+Architecture: source armhf
+Version: 1.0-2
+Distribution: UNRELEASED
+Urgency: low
+Maintainer: Ralph Glass <ralph.glass@t-online.de>
+Changed-By: Ralph Glass <ralph.glass@t-online.de>
+Description: 
+ web        - minimal-web-browser
+Changes: 
+ web (1.0-2) UNRELEASED; urgency=low
+ .
+   * Initial release.
+Checksums-Sha1: 
+ 12b2616603e52af6f77d9834e3eedec941908b35 735 web_1.0-2.dsc
+ 83e482da0df7c1e7839e830aefdedcd9397d1823 16483 web_1.0.orig.tar.gz
+ f39d5bd4f64a9db566d3625404475404cbb2a66a 12866 web_1.0-2.debian.tar.gz
+ 705e4f80378adc07c4e02da7c0663aab91cd7358 13314 web_1.0-2_armhf.deb
+Checksums-Sha256: 
+ 1effe8546d06675f01ee58e435c9c53f030c9bbb196bcf24336cbe631df564db 735 web_1.0-2.dsc
+ 5c73c94a898288a986fcd38ccceb17a83a2d4c65a5a53cbac28fbc4e1a7474bd 16483 web_1.0.orig.tar.gz
+ dd9f4c3747371e0b338cee50c0287758484cae5ed975896b17dd1ea31d89c6b9 12866 web_1.0-2.debian.tar.gz
+ b0c18efe493ca7dd62f05765caaef2450b7e8fc8a62e10bcd0f2bf2969f08fa4 13314 web_1.0-2_armhf.deb
+Files: 
+ a379b89827480ffd19cf7f956e36afe5 735 net optional web_1.0-2.dsc
+ ec467a11be49866c0eaf886990777355 16483 net optional web_1.0.orig.tar.gz
+ 880d7ef0adadd2dde3cf84d2216d03af 12866 net optional web_1.0-2.debian.tar.gz
+ 19caa949865b2da789eb4c1147472709 13314 net optional web_1.0-2_armhf.deb

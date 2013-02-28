@@ -1,0 +1,17 @@
+Source: web
+Maintainer: Ralph Glass <ralph.glass@t-online.de>
+Section: net
+Priority: optional
+Standards-Version: 3.9.4
+Build-Depends: debhelper (>= 8), libwebkitgtk-dev
+
+Package: web
+Architecture: any
+Depends: libwebkitgtk-3.0-0
+Description: minimal-web-browser
+    intended as fast and featureless sidekick browser 
+    (start up on raspberrypi less than a second)
+
+
+
+
