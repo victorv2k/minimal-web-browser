@@ -1,6 +1,6 @@
 prefix=/usr
 
-game: web.c
+web: web.c
 	gcc web.c -o web `pkg-config --cflags gtk+-2.0 --libs webkit-1.0`
 
 install: web
@@ -24,5 +24,3 @@ deb: web
 
 install-deb: web_1.0-2_armhf.deb
 	sudo dpkg -i ../web_1.0-2_armhf.deb
-	
-

@@ -9,11 +9,11 @@ Build-Depends: debhelper (>= 8), libwebkitgtk-dev
 Package-List: 
  web deb net optional
 Checksums-Sha1: 
- be96b0b607259100a98f38b4566d5eb6ad00d4f0 16429 web_1.0.orig.tar.gz
- 7f6900a832ea0e98a07d08a6fb95cd8df82fd6f8 12876 web_1.0-2.debian.tar.gz
+ 5d9d3ad3f69373b762ac007044de2a724e531daa 16737 web_1.0.orig.tar.gz
+ 5958cc1634d58b940e1d12f64d9713fe18e0fcce 12947 web_1.0-2.debian.tar.gz
 Checksums-Sha256: 
- 8309d07317441db3dc75229c7a5287a60cbe0456c91b6603a08d786766ed26cc 16429 web_1.0.orig.tar.gz
- 5addd5ef292c46caa5a2d6b4591d428f526e6bc6190553720fe44db5684b9e71 12876 web_1.0-2.debian.tar.gz
+ b308639ce3878892a4e2d3babfe8a0660c279db644482383704a5b7271158563 16737 web_1.0.orig.tar.gz
+ c6bce96dc3820c6e1d34bbb6bfe1a1fca2f5234858b4d768587a210b3a4d8585 12947 web_1.0-2.debian.tar.gz
 Files: 
- 73d6c3a185607541e1e16d11bc9e1632 16429 web_1.0.orig.tar.gz
- f23af7f11264f5370705fc1f81aa7fb1 12876 web_1.0-2.debian.tar.gz
+ 356213bcde35fcc328551c8319599275 16737 web_1.0.orig.tar.gz
+ 646979d137c46a2c385cc54d90c30602 12947 web_1.0-2.debian.tar.gz
