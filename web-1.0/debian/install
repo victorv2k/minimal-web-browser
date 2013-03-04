@@ -1,0 +1,3 @@
+web usr/bin
+web.desktop usr/share/applications
+minimalwebbrowser.png usr/share/pixmaps

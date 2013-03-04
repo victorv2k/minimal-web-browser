@@ -22,5 +22,5 @@ tar: web.c Makefile
 deb: web
 	debuild -us -uc	
 
-install-deb: web_1.0-2_armhf.deb
-	sudo dpkg -i ../web_1.0-2_armhf.deb
+install-deb: web_1.0-*_armhf.deb
+	sudo dpkg -i ../web_1.0-*_armhf.deb
