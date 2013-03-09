@@ -1,4 +1,8 @@
 Install Instructions:
 
-sudo dpkg -i web_1.0-2_armhf.deb
+make
+sudo make install
 
+or install debian package with command:
+
+sudo dpkg -i 

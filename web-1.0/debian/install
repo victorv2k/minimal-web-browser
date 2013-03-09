@@ -1,3 +1,4 @@
 web usr/bin
 web.desktop usr/share/applications
 minimalwebbrowser.png usr/share/pixmaps
+web.1.gz /usr/share/man/man1

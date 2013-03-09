@@ -1,5 +1,6 @@
-ee78a69d0ea12382b0ff7ec05a7cb09e  usr/bin/web
+f79ea213a38707451480dfe95bff8e96  usr/bin/web
 d1239858af3681c7b0e1c224ce7eb8dd  usr/share/applications/web.desktop
-ed5b0a8fe59e7abcc68dc68ef285bbbd  usr/share/doc/web/changelog.Debian.gz
+6e30f32cf9eda1f50961d5742d0e5177  usr/share/doc/web/changelog.Debian.gz
 2a24e00cb5c3f51fa1de06ae2d7d24f7  usr/share/doc/web/copyright
+23ecf2984ea5727e98b7ffb3372892c0  usr/share/man/man1/web.1.gz
 fea12c57984054103b13cc3b14f00c44  usr/share/pixmaps/minimalwebbrowser.png
