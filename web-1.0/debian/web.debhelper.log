@@ -34,7 +34,6 @@ dh_lintian
 dh_gconf
 dh_icons
 dh_perl
-dh_usrlocal
 dh_link
 dh_compress
 dh_fixperms
