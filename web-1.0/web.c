@@ -164,6 +164,7 @@ static WebKitWebView* createWebView (WebKitWebView*  parentWebView,
         GtkWidget*     uriEntry = gtk_entry_new();
         GtkWidget*     toolbar = gtk_toolbar_new();
         GtkToolItem*   item;
+        GtkTooltips* tooltips = gtk_tooltips_new();
         WebKitWebView* webView = WEBKIT_WEB_VIEW(webkit_web_view_new());
 
         g_object_set (G_OBJECT(settings), "enable-scripts", javascript, NULL); 
@@ -190,6 +191,7 @@ static WebKitWebView* createWebView (WebKitWebView*  parentWebView,
         gtk_tool_button_set_label(GTK_TOOL_BUTTON( item ), "Javascript");
         gtk_toolbar_insert(GTK_TOOLBAR( toolbar ), item, -1);
         gtk_toggle_tool_button_set_active(GTK_TOGGLE_TOOL_BUTTON( item ), javascript);
+        gtk_tooltips_set_tip(tooltips, GTK_WIDGET(item)," enable scripts ", NULL);
         g_signal_connect(G_OBJECT(item), "toggled", G_CALLBACK(toggleJavascript), webView);
 
         gtk_window_set_default_size(GTK_WINDOW(window), 1024, 768);
@@ -214,6 +216,7 @@ static WebKitWebView* createWebView (WebKitWebView*  parentWebView,
                 webkit_web_view_load_uri(webView, "http://www.google.com");
         gtk_widget_grab_focus( GTK_WIDGET(webView));
         gtk_widget_show_all(window);
+        gtk_tooltips_enable(tooltips);
         if (arg != NULL)
                 gtk_widget_activate(uriEntry);
         return webView;

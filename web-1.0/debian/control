@@ -7,7 +7,7 @@ Build-Depends: debhelper (>= 8)
 
 Package: web
 Architecture: any
-Depends: ${shlibs:Depends}, ${misc:Depends}, libwebkitgtk-3.0-0, x11-xserver-utils, xterm
+Depends: ${shlibs:Depends}, ${misc:Depends}, libwebkitgtk-3.0-0, x11-xserver-utils, omxgtk
 Description: minimal-web-browser
 	intended as fast and featureless sidekick browser 
 	(start up on raspberrypi less than a second)
