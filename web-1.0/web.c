@@ -17,6 +17,7 @@
 
 #include <gtk/gtk.h>
 #include <webkit/webkit.h>
+#include <gdk/gdkkeysyms.h>
 #include <stdlib.h>
 #include <string.h>
 
@@ -45,6 +46,18 @@ static void goHome(GtkWidget* window, WebKitWebView* webView)
 {
         /* load start page (change to your favourite) */
         webkit_web_view_load_uri(webView, "http://www.google.com"); 
+}
+
+static void web_zoom_plus(WebKitWebView* webView)
+{
+        gfloat zoom = webkit_web_view_get_zoom_level(webView);
+        webkit_web_view_set_zoom_level(webView, zoom+0.25);
+}
+
+static void web_zoom_minus(WebKitWebView* webView)
+{
+        gfloat zoom = webkit_web_view_get_zoom_level(webView);
+        webkit_web_view_set_zoom_level(webView, zoom-0.25);
 }
 
 static void downloadRequested(WebKitWebView*  webView,
@@ -153,6 +166,20 @@ static gboolean mimePolicyDecision(WebKitWebView*           webView,
         return FALSE;
 }
 
+static void web_key_pressed(GtkWidget* widget, GdkEventKey* event, gpointer* data)
+{
+        if (event->type == GDK_KEY_PRESS){
+                switch (event->keyval){
+                case GDK_KEY_plus:
+                        web_zoom_plus(WEBKIT_WEB_VIEW(widget));
+                        break;
+                case GDK_KEY_minus:
+                        web_zoom_minus(WEBKIT_WEB_VIEW(widget));
+                        break;
+                }
+        }
+}
+
 static WebKitWebView* createWebView (WebKitWebView*  parentWebView,
                                      WebKitWebFrame* frame,
                                      char*           arg)
@@ -206,6 +233,7 @@ static WebKitWebView* createWebView (WebKitWebView*  parentWebView,
         g_signal_connect(window,   "destroy",             G_CALLBACK(destroy),            NULL);
         g_signal_connect(webView,  "close-web-view",      G_CALLBACK(closeView),          window);
         g_signal_connect(uriEntry, "activate",            G_CALLBACK(activateEntry),      NULL);
+        g_signal_connect(webView,  "key-press-event",     G_CALLBACK(web_key_pressed),     NULL);
         g_signal_connect(webView,  "create-web-view",     G_CALLBACK(createWebView),      uriEntry);
         g_signal_connect(webView,  "download-requested" , G_CALLBACK(downloadRequested),  uriEntry);
         g_signal_connect(webView,  "navigation-policy-decision-requested",
@@ -221,6 +249,7 @@ static WebKitWebView* createWebView (WebKitWebView*  parentWebView,
                 gtk_widget_activate(uriEntry);
         return webView;
 }
+
 
 /* main */
 
