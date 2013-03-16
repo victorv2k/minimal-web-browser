@@ -166,9 +166,9 @@ static gboolean mimePolicyDecision(WebKitWebView*           webView,
         return FALSE;
 }
 
-static void web_key_pressed(GtkWidget* widget, GdkEventKey* event, gpointer* data)
+static gboolean web_key_pressed(GtkWidget* widget, GdkEventKey* event, gpointer* data)
 {
-        if (event->type == GDK_KEY_PRESS){
+        if ((event->type == GDK_KEY_PRESS)&&(event->state & GDK_CONTROL_MASK)){
                 switch (event->keyval){
                 case GDK_KEY_plus:
                         web_zoom_plus(WEBKIT_WEB_VIEW(widget));
@@ -178,6 +178,7 @@ static void web_key_pressed(GtkWidget* widget, GdkEventKey* event, gpointer* dat
                         break;
                 }
         }
+        return FALSE;
 }
 
 static WebKitWebView* createWebView (WebKitWebView*  parentWebView,
