@@ -132,7 +132,9 @@ static gboolean navigationPolicyDecision(WebKitWebView*             webView,
         const char* uri = webkit_network_request_get_uri(request);
         gtk_entry_set_text(entry, webkit_network_request_get_uri(request));
         if ((strncmp(uri, "http://www.youtube.com/watch", 28 ) == 0 ) ||
-            (strncmp(uri, "http://www.youtube.com/embed", 28 ) == 0 )){
+            (strncmp(uri, "http://www.youtube.com/embed", 28 ) == 0 ) ||
+            (strncmp(uri, "https://www.youtube.com/watch", 29 ) == 0 ) ||
+            (strncmp(uri, "https://www.youtube.com/embed", 29 ) == 0 )){
                 g_print("youtube detected, streaming ...");
                 char* cmd = g_strjoin( NULL, "youtubestream.sh ", uri, NULL);
                 system(cmd);
