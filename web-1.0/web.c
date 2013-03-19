@@ -51,13 +51,13 @@ static void goHome(GtkWidget* window, WebKitWebView* webView)
 static void web_zoom_plus(WebKitWebView* webView)
 {
         gfloat zoom = webkit_web_view_get_zoom_level(webView);
-        webkit_web_view_set_zoom_level(webView, zoom+0.25);
+        webkit_web_view_set_zoom_level(webView, zoom+0.1);
 }
 
 static void web_zoom_minus(WebKitWebView* webView)
 {
         gfloat zoom = webkit_web_view_get_zoom_level(webView);
-        webkit_web_view_set_zoom_level(webView, zoom-0.25);
+        webkit_web_view_set_zoom_level(webView, zoom-0.1);
 }
 
 static void downloadRequested(WebKitWebView*  webView,
@@ -94,7 +94,7 @@ static void searchText(WebKitWebView* webView, gchar* searchString)
 static void toggleJavascript(GtkWidget* window, WebKitWebView* webView)
 {
         javascript=!javascript;
-        g_object_set (G_OBJECT(settings), "enable-scripts", javascript , NULL);
+        g_object_set(G_OBJECT(settings), "enable-scripts", javascript , NULL);
         webkit_web_view_reload(webView);
 }
 
@@ -120,6 +120,7 @@ static void activateEntry(GtkWidget* entry, gpointer* gdata)
         }
         const gchar* uri = gtk_entry_get_text(GTK_ENTRY(entry));
         webkit_web_view_load_uri(webView, uri);
+        gtk_widget_grab_focus( GTK_WIDGET(webView));
 }
 
 static gboolean navigationPolicyDecision(WebKitWebView*             webView,
@@ -150,6 +151,7 @@ static gboolean mimePolicyDecision(WebKitWebView*           webView,
                                    gpointer*                user_data)
 {
         const char* uri = webkit_network_request_get_uri(request);
+        g_print("\nmimetype: %s\n",mimetype);
         if ((strncmp(mimetype, "video/mp4", 9) == 0) ||
             (strncmp(mimetype, "application/octet-stream", 24) == 0)) {        
                 const char* command = g_strjoin(NULL,
@@ -157,11 +159,14 @@ static gboolean mimePolicyDecision(WebKitWebView*           webView,
                                                 webkit_network_request_get_uri(request),
                                                 NULL);
 
-                const char* omxgtk_command = g_strjoin(NULL,
-                                                       "omxgtk ",
-                                                       uri,
-                                                       NULL );
+                const char* omxgtk_command = g_strjoin(NULL, "omxgtk ", uri, NULL );
                 system(omxgtk_command);
+                webkit_web_policy_decision_ignore(policy_decision);
+                return TRUE;
+        }
+        if (strncmp(mimetype, "application/pdf", 15) == 0) {
+                const char* command = g_strjoin(NULL,"wget ",uri," -O /tmp/temp.pdf && mupdf /tmp/temp.pdf",NULL);
+                system(command);
                 webkit_web_policy_decision_ignore(policy_decision);
                 return TRUE;
         }
@@ -197,10 +202,12 @@ static WebKitWebView* createWebView (WebKitWebView*  parentWebView,
         GtkTooltips* tooltips = gtk_tooltips_new();
         WebKitWebView* webView = WEBKIT_WEB_VIEW(webkit_web_view_new());
 
-        g_object_set (G_OBJECT(settings), "enable-scripts", javascript, NULL); 
-        g_object_set (G_OBJECT(settings), "enable-private-browsing", TRUE, NULL);
-        g_object_set (G_OBJECT(settings), "enable-plugins", FALSE,NULL);
+        g_object_set(G_OBJECT(settings), "enable-scripts", javascript, NULL); 
+        g_object_set(G_OBJECT(settings), "enable-private-browsing", TRUE, NULL);
+        g_object_set(G_OBJECT(settings), "enable-plugins", FALSE,NULL);
+        g_object_set(G_OBJECT(settings), "enable-universal-access-from-file-uris", TRUE, NULL);
         webkit_web_view_set_settings(WEBKIT_WEB_VIEW(webView), settings);
+        webkit_web_view_set_full_content_zoom(webView,TRUE);
 
         if (arg != NULL)
                 gtk_entry_set_text(GTK_ENTRY(uriEntry), arg);
@@ -252,7 +259,6 @@ static WebKitWebView* createWebView (WebKitWebView*  parentWebView,
                 gtk_widget_activate(uriEntry);
         return webView;
 }
-
 
 /* main */
 
