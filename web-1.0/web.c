@@ -95,6 +95,8 @@ static void toggleJavascript(GtkWidget* window, WebKitWebView* webView)
 {
         javascript=!javascript;
         g_object_set(G_OBJECT(settings), "enable-scripts", javascript , NULL);
+        g_object_set(G_OBJECT(settings), "enable-plugins", FALSE,NULL);
+
         webkit_web_view_reload(webView);
 }
 
@@ -136,6 +138,8 @@ static gboolean navigationPolicyDecision(WebKitWebView*             webView,
             (strncmp(uri, "http://www.youtube.com/embed", 28 ) == 0 ) ||
             (strncmp(uri, "https://www.youtube.com/watch", 29 ) == 0 ) ||
             (strncmp(uri, "https://www.youtube.com/embed", 29 ) == 0 )){
+                if (webkit_web_navigation_action_get_reason(action) == WEBKIT_WEB_NAVIGATION_REASON_OTHER)
+                        return FALSE;
                 g_print("youtube detected, streaming ...");
                 char* cmd = g_strjoin( NULL, "youtubestream.sh ", uri, NULL);
                 system(cmd);
