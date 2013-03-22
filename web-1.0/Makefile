@@ -5,6 +5,7 @@ web: web.c
 
 install: web
 	sudo install -g dialout web $(prefix)/bin
+	sudo install piradio $(prefix)/local/bin
 	sudo cp ./web.desktop $(prefix)/share/applications
 	sudo cp ./minimalwebbrowser.png $(prefix)/share/pixmaps
 	sudo cp ./web.1.gz $(prefix)/share/man/man1
@@ -13,6 +14,7 @@ install: web
 
 remove: 
 	sudo rm $(prefix)/bin/web
+	sudo rm $(prefix)/local/bin/piradio
 	sudo rm $(prefix)/share/applications/web.desktop
 	sudo rm $(prefix)/share/pixmaps/minimalwebbrowser.png
 	sudo rm $(prefix)/share/man/man1/web.1.gz

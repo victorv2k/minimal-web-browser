@@ -1,0 +1,5 @@
+#!/bin/bash
+wget "$@" -O /tmp/web_radio.m3u
+mpc clear
+mpc add < /tmp/web_radio.m3u
+mpc play

@@ -60,6 +60,11 @@ static void web_zoom_minus(WebKitWebView* webView)
         webkit_web_view_set_zoom_level(webView, zoom-0.1);
 }
 
+static void web_media_stop(GtkWidget* widget, gpointer* data)
+{
+        system("mpc clear");
+}
+
 static void downloadRequested(WebKitWebView*  webView,
                               WebKitDownload* download, 
                               GtkEntry*       user_data_entry)
@@ -134,6 +139,15 @@ static gboolean navigationPolicyDecision(WebKitWebView*             webView,
 {
         const char* uri = webkit_network_request_get_uri(request);
         gtk_entry_set_text(entry, webkit_network_request_get_uri(request));
+        
+        if (g_str_has_suffix(uri, "m3u")){
+                g_printf("m3u detected\n");
+                char* cmd = g_strjoin(NULL, "piradio ", uri, NULL);
+                g_printf(cmd);
+                system(cmd);
+                return TRUE;
+        }
+
         if ((strncmp(uri, "http://www.youtube.com/watch", 28 ) == 0 ) ||
             (strncmp(uri, "http://www.youtube.com/embed", 28 ) == 0 ) ||
             (strncmp(uri, "https://www.youtube.com/watch", 29 ) == 0 ) ||
@@ -234,6 +248,11 @@ static WebKitWebView* createWebView (WebKitWebView*  parentWebView,
         gtk_toggle_tool_button_set_active(GTK_TOGGLE_TOOL_BUTTON( item ), javascript);
         gtk_tooltips_set_tip(tooltips, GTK_WIDGET(item)," enable scripts ", NULL);
         g_signal_connect(G_OBJECT(item), "toggled", G_CALLBACK(toggleJavascript), webView);
+
+        item = gtk_tool_button_new_from_stock(GTK_STOCK_MEDIA_STOP);
+        gtk_toolbar_insert(GTK_TOOLBAR(toolbar), item, -1);
+        gtk_tool_button_set_label(GTK_TOOL_BUTTON(item), "Stop");
+        g_signal_connect(G_OBJECT(item), "clicked", G_CALLBACK(web_media_stop), webView);
 
         gtk_window_set_default_size(GTK_WINDOW(window), 1024, 768);
         g_object_set_data( G_OBJECT(uriEntry), "webView", webView);
