@@ -3,3 +3,4 @@ web.desktop usr/share/applications
 minimalwebbrowser.png usr/share/pixmaps
 web.1.gz usr/share/man/man1
 web-omxplayer.sh usr/local/bin
+piradio /usr/local/bin

@@ -5,7 +5,8 @@ web: web.c
 
 install: web
 	sudo install -g dialout web $(prefix)/bin
-	sudo install piradio $(prefix)/local/bin
+	sudo install -g audio piradio $(prefix)/local/bin
+	sudo chmod +x $(prefix)/local/bin/piradio
 	sudo cp ./web.desktop $(prefix)/share/applications
 	sudo cp ./minimalwebbrowser.png $(prefix)/share/pixmaps
 	sudo cp ./web.1.gz $(prefix)/share/man/man1
@@ -24,7 +25,7 @@ clean:
 	rm ./web
 
 tar: web.c Makefile
-	cd .. && tar -czvf web_1.0.orig.tar.gz ./web-1.0/Makefile ./web-1.0/web.c ./web-1.0/INSTALL ./web-1.0/COPYING ./web-1.0/minimalwebbrowser.png ./web-1.0/web.desktop ./web-1.0/web.1.gz ./web-1.0/web-omxplayer.sh
+	cd .. && tar -czvf web_1.0.orig.tar.gz ./web-1.0/Makefile ./web-1.0/web.c ./web-1.0/INSTALL ./web-1.0/COPYING ./web-1.0/minimalwebbrowser.png ./web-1.0/web.desktop ./web-1.0/web.1.gz ./web-1.0/web-omxplayer.sh ./web-1.0/piradio
 
 deb: web
 	debuild -us -uc	
